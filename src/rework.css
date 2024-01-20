@@ -1,0 +1,64 @@
+
+body {
+    margin: 0 auto;
+    max-width: 50em;
+    font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
+    line-height: 1.5;
+    padding: 4em 1em;
+    color: #555;
+}
+
+nav {
+    font-family: "Helvetica", "Arial", sans-serif;
+}
+
+nav h1 {
+    font-size: 40px;
+}
+
+p {
+    margin: 1em;
+}
+
+a:visited {
+    color: #555;
+}
+
+p em {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    margin-top: 0.5em;
+    margin-left: 1em;
+}
+
+h1,
+h2,
+strong {
+  color: #333;
+}
+
+/* Add shadows to create the "card" effect */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+}
+
+.card div {
+    padding-bottom: 1em;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* hr {
+    margin-top: 3rem;
+    margin-bottom: 3.5rem;
+    border-width: 0;
+    border-top: 1px solid #e1e1e1;
+} */

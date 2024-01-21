@@ -1,0 +1,18 @@
+{
+    auto_https off
+}
+
+:8080 {
+    root * /usr/share/caddy
+    file_server 
+
+    @post {
+        method POST
+        not header Authorization {$API_KEY}
+    }
+
+    handle /api/* {
+        respond @post "Forbidden" 403
+        reverse_proxy localhost:8090
+    }
+}

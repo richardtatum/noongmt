@@ -10,12 +10,7 @@
         // promise = fetch("http://127.0.0.1:8090/api/collections/posts/records?page=1&perPage=500&skipTotal=1&filter=live_date<=@now&sort=-live_date")
         promise = fetch(
             "http://127.0.0.1:8090/api/collections/posts/records?page=1&perPage=500&skipTotal=1&sort=-live_date"
-        ).then((response) => {
-            var r = response.json();
-
-            console.log(r);
-            return r;
-        });
+        ).then((response) =>response.json());
     }
 
     onMount(async () => {
@@ -24,6 +19,7 @@
 </script>
 
 <nav>
+    <p>A new song everyday at</p>
     <h1>NOON GMT</h1>
 </nav>
 

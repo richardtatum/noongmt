@@ -10,10 +10,6 @@
         month: "long",
         year: "numeric",
     });
-
-    // let title = new Date(live_date).toISOString().split('T')[0];
-
-    let betterDate = new Date(live_date).toDateString("YYY-MM-DD");
 </script>
 
 <div class="card">

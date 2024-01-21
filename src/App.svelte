@@ -6,7 +6,7 @@
 
     async function getPosts() {
         promise = fetch(
-            "http://127.0.0.1:8090/api/collections/posts/records?page=1&perPage=500&skipTotal=1&sort=-live_date"
+            "api/collections/posts/records?page=1&perPage=500&skipTotal=1&sort=-live_date"
         ).then((response) => response.json());
     }
 

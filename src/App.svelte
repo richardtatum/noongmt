@@ -1,14 +1,13 @@
 <script lang="ts">
-    import SpotifyPlayer from "./lib/SpotifyPlayer.svelte";
+    import Post from "./lib/Post.svelte";
     import { onMount } from "svelte";
 
     let promise: Promise<any>;
 
     async function getPosts() {
-        // promise = fetch("http://127.0.0.1:8090/api/collections/posts/records?page=1&perPage=500&skipTotal=1&filter=live_date<=@now&sort=-live_date")
         promise = fetch(
             "http://127.0.0.1:8090/api/collections/posts/records?page=1&perPage=500&skipTotal=1&sort=-live_date"
-        ).then((response) =>response.json());
+        ).then((response) => response.json());
     }
 
     onMount(async () => {
@@ -29,7 +28,7 @@
             {:then posts}
                 {#each posts.items as post}
                     <div>
-                        <SpotifyPlayer
+                        <Post
                             trackId={post.track_id}
                             live_date={post.live_date}
                             description={post.description}

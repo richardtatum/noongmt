@@ -43,7 +43,7 @@
                     </div>
                 {/each}
             {:catch error}
-                <p>{error}</p>
+                <p>Something went wrong. So there are no posts...</p>
             {/await}
         {:else}
             <p>Strange, no posts...</p>
@@ -52,8 +52,14 @@
 </main>
 
 <footer>
-    <hr/>
-    <p>Inspired by the once fantastic <a href="https://noonpacific.com/"  target="_blank" rel="noreferrer">NOON PACIFIC</a></p>
+    <hr />
+    <p>
+        Inspired by the once fantastic <a
+            href="https://noonpacific.com/"
+            target="_blank"
+            rel="noreferrer">NOON PACIFIC</a
+        >
+    </p>
 </footer>
 
 <style>

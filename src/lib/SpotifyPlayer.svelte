@@ -20,10 +20,9 @@
     <iframe
         id = spotify
         title="big-player"
-        style="border-radius:12px"
         {src}
         width="100%"
-        height="352"
+        height="400px"
         frameBorder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"

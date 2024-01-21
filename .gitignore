@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Pocketbase
-pb_data/*
+db/pb_data/*

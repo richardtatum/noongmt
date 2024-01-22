@@ -1,7 +1,7 @@
 <script lang="ts">
     export let trackId: string;
     export let live_date: string;
-    export let description: string | null;
+    export let description: string | undefined;
 
     let src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator`;
     let title = new Date(live_date).toLocaleDateString("en-GB", {
@@ -26,7 +26,6 @@
 
     <div>
         <h2>{title}</h2>
-        <!-- <h2><u>{title}</u></h2> -->
     </div>
 
     {#if description}

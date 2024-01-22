@@ -1,6 +1,6 @@
 # NOONGMT
 
-This is the source code for http://noongmt.com
+This is the source code for https://noongmt.com
 
 ## Run this locally
 

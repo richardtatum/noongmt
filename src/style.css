@@ -33,7 +33,7 @@ p {
     margin: 1em;
 }
 
-a:visited {
+a, a:visited {
     color: #555;
 }
 

@@ -2,12 +2,20 @@
     import Post from "./lib/Post.svelte";
     import { onMount } from "svelte";
 
-    let promise: Promise<any>;
+    class PostData {
+        track_id!: string;
+        description: string | undefined;
+        live_date!: string; 
+    }
+
+    let promise: Promise<PostData[]>;
 
     async function getPosts() {
         promise = fetch(
             "api/collections/posts/records?page=1&perPage=500&skipTotal=1&filter=live_date<=@now&sort=-live_date"
-        ).then((response) => response.json());
+        )
+        .then((response) => response.json())
+        .then(data => data.items);
     }
 
     onMount(async () => {
@@ -26,7 +34,7 @@
             {#await promise}
                 <p>Loading...</p>
             {:then posts}
-                {#each posts.items as post}
+                {#each posts as post}
                     <div>
                         <Post
                             trackId={post.track_id}

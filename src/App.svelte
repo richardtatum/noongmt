@@ -1,26 +1,52 @@
 <script lang="ts">
-    import Post from "./lib/Post.svelte";
     import { onMount } from "svelte";
-
+    import Post from "./lib/Post.svelte";
+    import IntersectionObserver from "svelte-intersection-observer";
+    
     class PostData {
         track_id!: string;
         description: string | undefined;
-        live_date!: string; 
+        live_date!: string;
     }
 
-    let promise: Promise<PostData[]>;
+    let posts: PostData[] = [];
+    let visiblePosts = 3;
+    let endOfData = false;
+    let loading = false;
+    let page = 1;
+
 
     async function getPosts() {
-        promise = fetch(
-            "api/collections/posts/records?page=1&perPage=500&skipTotal=1&filter=live_date<=@now&sort=-live_date"
+        loading = true;
+        const newPosts: PostData[] = await fetch(
+            `api/collections/posts/records?page=${page}&perPage=${visiblePosts}&skipTotal=1&filter=live_date<=@now&sort=-live_date`
         )
-        .then((response) => response.json())
-        .then(data => data.items);
+            .then((response) => response.json())
+            .then((data) => data.items);
+
+        // If we have reached the end of the available data, don't allow any further calls
+        if (newPosts.length === 0) {
+            endOfData = true;
+            loading = false;
+            return;
+        }
+
+        posts = [...posts, ...newPosts];
+        loading = false;
+        page ++;
     }
 
     onMount(async () => {
         await getPosts();
     });
+
+    function handleIntersection() {
+        if (!loading && !endOfData) {
+            getPosts();
+        }
+    }
+
+    let element: HTMLElement;
 </script>
 
 <nav>
@@ -30,25 +56,23 @@
 
 <main>
     <div class="container">
-        {#if promise}
-            {#await promise}
-                <p>Loading...</p>
-            {:then posts}
-                {#each posts as post}
-                    <div>
-                        <Post
-                            trackId={post.track_id}
-                            live_date={post.live_date}
-                            description={post.description}
-                        />
-                    </div>
-                {/each}
-            {:catch error}
-                <p>Something went wrong. So there are no posts...</p>
-            {/await}
-        {:else}
-            <p>Strange, no posts...</p>
+        {#each posts as post}
+            <div>
+                <Post
+                    trackId={post.track_id}
+                    live_date={post.live_date}
+                    description={post.description}
+                />
+            </div>
+        {/each}
+
+        {#if loading}
+            <p>Loading...</p>
         {/if}
+
+        <IntersectionObserver {element} on:intersect={handleIntersection}>
+            <div class="lazy-load-trigger" bind:this={element}>
+        </IntersectionObserver>
     </div>
 </main>
 

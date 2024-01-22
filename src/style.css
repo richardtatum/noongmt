@@ -52,8 +52,12 @@ strong {
   color: #333;
 }
 
- div .card h2 {
+div .card h2 {
     margin-top: -1.5em;
+}
+
+div .lazy-load-trigger {
+    height: 1px;
 }
 
 /* Add shadows to create the "card" effect */

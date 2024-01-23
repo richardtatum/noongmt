@@ -8,12 +8,6 @@ body {
     color: #555;
 }
 
-@media (max-width: 768px) {
-    body {
-        padding: 1em 1em;
-    }
-}
-
 nav {
     margin-bottom: 4em;
     font-family: "Helvetica", "Arial", sans-serif;
@@ -77,9 +71,31 @@ div .lazy-load-trigger {
     box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* hr {
-    margin-top: 3rem;
-    margin-bottom: 3.5rem;
-    border-width: 0;
-    border-top: 1px solid #e1e1e1;
-} */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    background-color: #fff;
+    color: #555;
+    border-color: #555;
+    border-width: 1px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 1em 1em;
+    }
+
+    .scroll-to-top {
+        bottom: 10px;
+        right: 10px;
+    }
+}

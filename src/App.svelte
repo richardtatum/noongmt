@@ -2,7 +2,8 @@
     import { onMount } from "svelte";
     import Post from "./lib/Post.svelte";
     import IntersectionObserver from "svelte-intersection-observer";
-    
+    import ScrollToTop from "./lib/ScrollToTop.svelte";
+
     class PostData {
         track_id!: string;
         description: string | undefined;
@@ -14,7 +15,6 @@
     let endOfData = false;
     let loading = false;
     let page = 1;
-
 
     async function getPosts() {
         loading = true;
@@ -33,20 +33,19 @@
 
         posts = [...posts, ...newPosts];
         loading = false;
-        page ++;
+        page++;
     }
 
     onMount(async () => {
         await getPosts();
     });
 
+    let element: HTMLElement;
     function handleIntersection() {
         if (!loading && !endOfData) {
             getPosts();
         }
     }
-
-    let element: HTMLElement;
 </script>
 
 <nav>
@@ -71,9 +70,11 @@
         {/if}
 
         <IntersectionObserver {element} on:intersect={handleIntersection}>
-            <div class="lazy-load-trigger" bind:this={element}>
+            <div class="lazy-load-trigger" bind:this={element}></div>
         </IntersectionObserver>
     </div>
+
+    <ScrollToTop />
 </main>
 
 <footer>

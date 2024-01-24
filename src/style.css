@@ -1,8 +1,12 @@
+@font-face {
+    font-family: "Roboto Slab";
+    src: url("./fonts/RobotoSlab.ttf");
+}
 
 body {
     margin: 0 auto;
     max-width: 50em;
-    font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
+    font-family: "Helvetica", "Arial", sans-serif;
     line-height: 1.5;
     padding: 4em 1em;
     color: #555;
@@ -10,7 +14,6 @@ body {
 
 nav {
     margin-bottom: 4em;
-    font-family: "Helvetica", "Arial", sans-serif;
 }
 
 nav h1 {
@@ -64,6 +67,14 @@ div .lazy-load-trigger {
 
 .card div {
     padding-bottom: 0.5em;
+}
+
+.card .title {
+    font-family: "Roboto Slab", "Helvetica", "Arial", sans-serif;
+}
+
+.card .description {
+    text-align: center;
 }
 
 /* On mouse-over, add a deeper shadow */

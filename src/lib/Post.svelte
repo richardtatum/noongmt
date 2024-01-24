@@ -25,12 +25,12 @@
     ></iframe>
 
     <div>
-        <h2>{title}</h2>
+        <h2 class="title">{title}</h2>
     </div>
 
     {#if description}
         <div>
-            <p style="text-align:center">- "<em>{description}</em>"</p>
+            <p class="description">- "<em>{description}</em>"</p>
         </div>
     {/if}
 </div>

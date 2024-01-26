@@ -4,21 +4,15 @@ This is the source code for https://noongmt.com
 
 ## Run this locally
 
-To run this locally first update the `Caddyfile`:
-```diff
-    # reverse proxy GET requests to the posts collection
-    handle /api/collections/posts/records* {
-        respond @unauthorizedMethods  "Forbidden" 403
--       reverse_proxy noongmt.internal:8090
-+       reverse_proxy localhost:8090
-    }
-
-    # Any other requests require the API key
-    handle /api/* {
-        respond @missingHeader  "Forbidden" 403
--       reverse_proxy noongmt.internal:8090
-+       reverse_proxy localhost:8090
-    }
+Build and run `noongmt` with Docker:
+```sh
+docker build -t noongmt .
+docker run -p 80:8080 -e API_KEY="your-preferred-key" -e POCKETBASE_URL="localhost:8090" noongmt:latest
 ```
 
-Then build and run the dockerfile, passing an environment variable for the API key with `-e API_KEY="your-api-key-here`
+The provided `API_KEY` is used to protect endpoints from anything other than `GET` requests. Caddy intercepts all other methods and if the provided API key isn't found in the `Authorization` header, the request is rejected.
+
+## References
+
+- [Pocketbase](https://pocketbase.io/)
+- [Pocketbase Web APIs](https://pocketbase.io/docs/api-records/)

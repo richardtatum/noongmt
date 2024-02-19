@@ -3,12 +3,7 @@
     import Post from "./lib/Post.svelte";
     import IntersectionObserver from "svelte-intersection-observer";
     import ScrollToTop from "./lib/ScrollToTop.svelte";
-
-    class PostData {
-        track_id!: string;
-        description: string | undefined;
-        live_date!: string;
-    }
+    import type { PostData } from "./models/postdata.model";
 
     let posts: PostData[] = [];
     let visiblePosts = 3;
@@ -57,11 +52,7 @@
     <div class="container">
         {#each posts as post}
             <div>
-                <Post
-                    trackId={post.track_id}
-                    live_date={post.live_date}
-                    description={post.description}
-                />
+                <Post data={post} />
             </div>
         {/each}
 

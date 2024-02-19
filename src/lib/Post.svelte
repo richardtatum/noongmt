@@ -1,10 +1,10 @@
 <script lang="ts">
-    export let trackId: string;
-    export let live_date: string;
-    export let description: string | undefined;
+    import type { PostData } from "../models/postdata.model";
 
-    let src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator`;
-    let title = new Date(live_date).toLocaleDateString("en-GB", {
+    export let data: PostData;
+
+    let src = `https://open.spotify.com/embed/track/${data.track_id}?utm_source=generator`;
+    let title = new Date(data.live_date).toLocaleDateString("en-GB", {
         day: "numeric",
         weekday: "long",
         month: "long",
@@ -28,9 +28,9 @@
         <h2 class="title">{title}</h2>
     </div>
 
-    {#if description}
+    {#if data.description}
         <div>
-            <p class="description">- "<em>{description}</em>"</p>
+            <p class="description">- "<em>{data.description}</em>"</p>
         </div>
     {/if}
 </div>

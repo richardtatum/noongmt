@@ -5,6 +5,7 @@
     import ScrollToTop from "./lib/ScrollToTop.svelte";
     import type { PostData } from "./models/postdata.model";
 
+    let element: HTMLElement;
     let posts: PostData[] = [];
     let visiblePosts = 3;
     let endOfData = false;
@@ -35,7 +36,6 @@
         await getPosts();
     });
 
-    let element: HTMLElement;
     function handleIntersection() {
         if (!loading && !endOfData) {
             getPosts();

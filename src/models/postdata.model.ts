@@ -1,5 +1,5 @@
-export class PostData {
-    track_id!: string;
+export type PostData = {
+    track_id: string;
     description: string | undefined;
-    live_date!: string;
+    live_date: string;
 }

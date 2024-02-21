@@ -3,13 +3,9 @@
     import Post from "./lib/Post.svelte";
     import IntersectionObserver from "svelte-intersection-observer";
     import ScrollToTop from "./lib/ScrollToTop.svelte";
+    import type { PostData } from "./models/postdata.model";
 
-    class PostData {
-        track_id!: string;
-        description: string | undefined;
-        live_date!: string;
-    }
-
+    let element: HTMLElement;
     let posts: PostData[] = [];
     let visiblePosts = 3;
     let endOfData = false;
@@ -40,7 +36,6 @@
         await getPosts();
     });
 
-    let element: HTMLElement;
     function handleIntersection() {
         if (!loading && !endOfData) {
             getPosts();
@@ -57,11 +52,7 @@
     <div class="container">
         {#each posts as post}
             <div>
-                <Post
-                    trackId={post.track_id}
-                    live_date={post.live_date}
-                    description={post.description}
-                />
+                <Post data={post} />
             </div>
         {/each}
 

@@ -24,3 +24,4 @@ dist-ssr
 
 # Pocketbase
 db/pb_data/*
+db/pb_public/*

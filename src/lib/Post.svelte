@@ -3,7 +3,7 @@
 
     export let data: PostData;
 
-    let src = `https://open.spotify.com/embed/track/${data.track_id}?utm_source=generator`;
+    let src = `https://open.spotify.com/embed/track/${data.track_id}`;
     let title = new Date(data.live_date).toLocaleDateString("en-GB", {
         day: "numeric",
         weekday: "long",

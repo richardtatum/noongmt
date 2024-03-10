@@ -26,4 +26,5 @@
 
 # Pocketbase
 **/db/pb_data/*
+**/db/pb_public/*
 fly.toml

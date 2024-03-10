@@ -1,4 +1,4 @@
-FROM oven/bun:alpine as build
+FROM oven/bun:alpine AS build
 WORKDIR /app
 
 COPY package*.json /
@@ -11,13 +11,10 @@ RUN apk update
 RUN apk add --upgrade brotli
 RUN cd /app/dist && find . -type f -exec brotli {} \;
 
-FROM caddy:alpine as production
+FROM oven/bun:alpine AS production
+WORKDIR /
 
 COPY --from=build /app/db /db
-COPY --from=build /app/dist /usr/share/caddy
-COPY Caddyfile /etc/caddy/Caddyfile
-COPY entrypoint.sh /
+COPY --from=build /app/dist /db/pb_public
 
-RUN ["chmod", "+x", "/entrypoint.sh"]
-
-CMD ["/entrypoint.sh"]
+CMD ["/db/pocketbase", "serve", "--http=0.0.0.0:8080"]

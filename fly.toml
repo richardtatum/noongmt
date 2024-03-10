@@ -1,32 +1,22 @@
-# fly.toml app configuration file generated for noongmt on 2024-01-21T14:40:13Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = "noongmt"
 primary_region = "lhr"
 
 [build]
-  dockerfile = "Dockerfile"
-
-[processes]
-    web = "caddy run --config /etc/caddy/Caddyfile"
-    pocketbase = "/db/pocketbase serve --http=0.0.0.0:8090"
+dockerfile = "Dockerfile"
 
 [http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 1
-  processes = ["web"]
+internal_port = 8080
+force_https = true
+auto_stop_machines = true
+auto_start_machines = true
+min_machines_running = 0
+processes = ["app"]
 
 [[vm]]
-  cpu_kind = "shared"
-  cpus = 1
-  memory_mb = 256
+cpu_kind = "shared"
+cpus = 1
+memory_mb = 256
 
 [mounts]
-    source = "pb_data"
-    destination = "/db/pb_data"
-    processes = ["pocketbase"]
+source = "pb_data"
+destination = "/db/pb_data"

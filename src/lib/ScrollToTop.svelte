@@ -27,9 +27,8 @@
         background-color: #e9e9ed;
         color: #555;
         border-radius: 12px;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     button:hover {

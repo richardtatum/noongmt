@@ -67,9 +67,10 @@
     button {
         border: 0px;
         background-color: white;
+        color: #555
     }
 
-    button:hover {
+    button:hover, button:focus, button:active {
         cursor: pointer;
         color: grey;
     }

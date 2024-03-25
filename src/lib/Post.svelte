@@ -4,17 +4,13 @@
     import LinkIcon from "./LinkIcon.svelte";
     import { onMount } from 'svelte';
     import { Tooltip } from "@svelte-plugins/tooltips";
+    import { getHumanReadableDate } from "./Utils";
     
     export let data: PostData;
     export let shareableLink: boolean = false;
 
     let src = `https://open.spotify.com/embed/track/${data.track_id}`;
-    let title = new Date(data.live_date).toLocaleDateString("en-GB", {
-        day: "numeric",
-        weekday: "long",
-        month: "long",
-        year: "numeric",
-    });
+    let title = getHumanReadableDate(data.live_date);
 
     let url = "";
     onMount(() => {

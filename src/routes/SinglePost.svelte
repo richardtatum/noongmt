@@ -3,6 +3,7 @@
     import Post from "../lib/Post.svelte";
     import { Link } from "svelte-routing";
     import ReturnIcon from "../lib/ReturnIcon.svelte";
+    import { getHumanReadableDate } from "../lib/Utils";
 
     export let id: string;
 
@@ -20,6 +21,12 @@
 
     $: getPost(id);
 </script>
+
+<svelte:head>
+    <meta property="og:title" content={post ? `NOONGMT - ${getHumanReadableDate(post.live_date)}` : "NOONGMT"} />
+    <meta property="og:description" content={post ? post.description : ""} />
+    <meta property="og:url" content="https://noongmt.com/{id}" />
+</svelte:head>
 
 <main>
     <div class="container">

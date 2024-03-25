@@ -43,6 +43,12 @@
     }
 </script>
 
+<svelte:head>
+    <meta property="og:title" content="NOONGMT" />
+    <meta property="og:description" content="A new song everyday, at noon GMT." />
+    <meta property="og:url" content="https://noongmt.com" />
+</svelte:head>
+
 <main>
     <div class="container">
         {#each posts as post}

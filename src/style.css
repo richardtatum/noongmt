@@ -26,6 +26,10 @@ nav p {
     margin: 0 0.1em 0;
 }
 
+nav a {
+    text-decoration: none;
+}
+
 p {
     margin: 1em;
 }

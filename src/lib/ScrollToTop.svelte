@@ -29,6 +29,8 @@
         border-radius: 12px;
         left: 50%;
         transform: translateX(-50%);
+        line-height: 1.5;
+        font-size: 0.9em;
     }
 
     button:hover {

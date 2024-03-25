@@ -56,5 +56,7 @@
         border: 0px;
         border-radius: 12px;
         padding: 5px 10px;
+        line-height: 1.5;
+        font-size: 0.9em;
     }
 </style>

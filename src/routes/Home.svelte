@@ -47,6 +47,7 @@
     <meta property="og:title" content="NOONGMT" />
     <meta property="og:description" content="A new song everyday, at noon GMT." />
     <meta property="og:url" content="https://noongmt.com" />
+    <link rel="canonical" href="https://noongmt.com" />
 </svelte:head>
 
 <main>

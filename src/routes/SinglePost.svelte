@@ -26,6 +26,7 @@
     <meta property="og:title" content={post ? `NOONGMT - ${getHumanReadableDate(post.live_date)}` : "NOONGMT"} />
     <meta property="og:description" content={post ? post.description : ""} />
     <meta property="og:url" content="https://noongmt.com/{id}" />
+    <link rel="canonical" href="https://noongmt.com/{id}" />
 </svelte:head>
 
 <main>

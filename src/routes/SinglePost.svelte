@@ -10,7 +10,7 @@
     async function getPost(postId: string) {
         loading = true;
         post = await fetch(
-            `http://localhost:8090/api/collections/posts/records/${postId}`
+            `api/collections/posts/records/${postId}`
         )
             .then((response) => response.json())
         loading = false;

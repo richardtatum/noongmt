@@ -15,7 +15,7 @@
     async function getPosts() {
         loading = true;
         const newPosts: PostData[] = await fetch(
-            `http://localhost:8090/api/collections/posts/records?page=${page}&perPage=${visiblePosts}&skipTotal=1&filter=live_date<=@now&sort=-live_date`
+            `api/collections/posts/records?page=${page}&perPage=${visiblePosts}&skipTotal=1&filter=live_date<=@now&sort=-live_date`
         )
             .then((response) => response.json())
             .then((data) => data.items);

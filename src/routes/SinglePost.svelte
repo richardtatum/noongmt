@@ -3,7 +3,7 @@
     import Post from "../lib/Post.svelte";
     import { Link } from "svelte-routing";
     import ReturnIcon from "../lib/ReturnIcon.svelte";
-    import { getHumanReadableDate } from "../lib/Utils";
+    import { getHumanReadableDate, getShortDate } from "../lib/Utils";
 
     export let id: string;
 
@@ -27,6 +27,7 @@
     <meta property="og:description" content={post ? post.description : ""} />
     <meta property="og:url" content="https://noongmt.com/{id}" />
     <link rel="canonical" href="https://noongmt.com/{id}" />
+    <title>NOONGMT {post ? `-${getShortDate(post.live_date)}` : ""}</title>
 </svelte:head>
 
 <main>
